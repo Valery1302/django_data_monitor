@@ -1,11 +1,8 @@
-function data() {
+window.data = function () {
   function getThemeFromLocalStorage() {
-    // if user already changed the theme, use it
     if (window.localStorage.getItem('dark')) {
       return JSON.parse(window.localStorage.getItem('dark'))
     }
-
-    // else return their preferences
     return (
       !!window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -22,6 +19,7 @@ function data() {
       this.dark = !this.dark
       setThemeToLocalStorage(this.dark)
     },
+
     isSideMenuOpen: false,
     toggleSideMenu() {
       this.isSideMenuOpen = !this.isSideMenuOpen
@@ -29,6 +27,7 @@ function data() {
     closeSideMenu() {
       this.isSideMenuOpen = false
     },
+
     isNotificationsMenuOpen: false,
     toggleNotificationsMenu() {
       this.isNotificationsMenuOpen = !this.isNotificationsMenuOpen
@@ -36,6 +35,7 @@ function data() {
     closeNotificationsMenu() {
       this.isNotificationsMenuOpen = false
     },
+
     isProfileMenuOpen: false,
     toggleProfileMenu() {
       this.isProfileMenuOpen = !this.isProfileMenuOpen
@@ -43,11 +43,12 @@ function data() {
     closeProfileMenu() {
       this.isProfileMenuOpen = false
     },
+
     isPagesMenuOpen: false,
     togglePagesMenu() {
       this.isPagesMenuOpen = !this.isPagesMenuOpen
     },
-    // Modal
+
     isModalOpen: false,
     trapCleanup: null,
     openModal() {
