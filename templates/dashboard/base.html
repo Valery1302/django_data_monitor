@@ -10,7 +10,7 @@
         rel="stylesheet" />
 
     <!-- Reemplace por la ruta estática -->
-    <link rel="stylesheet" href="{%static 'css/tailwind.output.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tailwind.output.css' %}" />
 
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -90,7 +90,7 @@
         </aside>
 
         <!-- START - Block content -->
-         {% block content %}
+        {% block content %}
 
         <div class="flex items-center justify-center h-screen bg-gray-100 w-full">
             <div class="p-6 bg-white shadow-md rounded">
@@ -99,7 +99,7 @@
         </div>
 
         <!-- END - Block content -->
-         {% endblock %}
+        {% endblock %}
 
     </div>
 </body>
