@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv(
     "django-insecure-3cm)y7^rryx_59g@(ewg6v2ek9-ql6u!brz-23i25upp9+-ceh"
 )
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DJANGO_DEBUG", "False").lower() == "true"
+DEBUG = False
 
 CSRF_TRUSTED_ORIGINS = [
   "https://*.up.railway.app",
@@ -152,14 +152,10 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STATICFILES_FINDERS = [
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-]
 STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
+    }
 }
 WHITENOISE_USE_FINDERS = True
 
