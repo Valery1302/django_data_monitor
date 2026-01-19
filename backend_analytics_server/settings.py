@@ -35,8 +35,11 @@ CSRF_TRUSTED_ORIGINS = [
   "http://127.0.0.1:8000"
 ]
 
-ALLOWED_HOSTS = ['.up.railway.app']
-
+ALLOWED_HOSTS = [
+    ".up.railway.app",
+    "localhost",
+    "127.0.0.1",
+]
 
 # Application definition
 
@@ -158,6 +161,8 @@ STORAGES = {
     }
 }
 WHITENOISE_USE_FINDERS = True
+WHITENOISE_MANIFEST_STRICT = False
+
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
