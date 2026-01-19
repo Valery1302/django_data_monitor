@@ -117,3 +117,5 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+API_URL = 'http://danx111.pythonanywhere.com/landing/api/index/'
