@@ -161,4 +161,4 @@ WHITENOISE_USE_FINDERS = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-API_URL = "http://danx111.pythonanywhere.com/landing/api/index/"
+API_URL = "https://danx111.pythonanywhere.com/landing/api/index/"

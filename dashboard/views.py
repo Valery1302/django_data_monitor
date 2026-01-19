@@ -1,18 +1,33 @@
 from django.shortcuts import render
 import requests
 from django.conf import settings
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 
 @login_required
-@permission_required('dashboard.index_viewer', raise_exception=True)
 def index(request):
-    response = requests.get(settings.API_URL)  # URL de la API
-    posts = response.json()  # Convertir la respuesta a JSON
+    # (si quieres mantener permission_required, lo vemos luego)
+    try:
+        r = requests.get(settings.API_URL, timeout=10)
+        r.raise_for_status()
 
-    # Número total de respuestas
-    total_responses = len(posts)
-    data = {
-        'title': "Landing Page' Dashboard",
-        'total_responses': total_responses,
+        data = r.json()
+
+        # soporta lista o dict tipo {"results":[...]}
+        posts = data.get("results", []) if isinstance(data, dict) else data
+        if not isinstance(posts, list):
+            posts = []
+
+        api_error = None
+
+    except Exception as e:
+        posts = []
+        api_error = f"No se pudo cargar la API: {e.__class__.__name__}"
+
+    context = {
+        "title": "Landing Page Dashboard",
+        "total_responses": len(posts),
+        "posts": posts,
+        "api_error": api_error,
     }
-    return render(request, 'dashboard/index.html', data)
+    return render(request, "dashboard/index.html", context)
