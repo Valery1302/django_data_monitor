@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-3cm)y7^rryx_59g@(ewg6v2ek9-ql6u!brz-23i25upp9+-ceh
 DEBUG = False
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.up.railway.app",
+  "https://*.up.railway.app",
   "https://localhost:8000",
   "http://127.0.0.1:8000"
 ]
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Agregar WhiteNoise al middleware (debe ir después de SecurityMiddleware)
+    'whitenoise.middleware.WhiteNoiseMiddleware',  
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -144,10 +144,12 @@ LOGIN_URL = '/login/'
 
 # Éxito: luego de autenticación exitosa
 LOGIN_REDIRECT_URL = '/'
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'assets'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 API_URL = 'http://danx111.pythonanywhere.com/landing/api/index/'
